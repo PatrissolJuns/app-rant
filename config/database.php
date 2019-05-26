@@ -1,5 +1,18 @@
 <?php
 
+	/*
+	|--------------------------------------------------------------------------
+	| Information about database
+	|--------------------------------------------------------------------------
+	|
+	| Here we are getting all the information about our database by just taking
+	| them into .env .
+	|
+	|--------------------------------------------------------------------------
+	*/
+
+$DATABASE_URL = parse_url(env("DATABASE_URL"));
+
 return [
 
     /*
@@ -13,7 +26,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,9 +67,6 @@ return [
             'prefix_indexes' => true,
             'strict' => true,
             'engine' => null,
-            'options' => extension_loaded('pdo_mysql') ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
         ],
 
         'pgsql' => [
@@ -113,11 +123,7 @@ return [
 
     'redis' => [
 
-        'client' => env('REDIS_CLIENT', 'predis'),
-
-        'options' => [
-            'cluster' => env('REDIS_CLUSTER', 'predis'),
-        ],
+        'client' => 'predis',
 
         'default' => [
             'host' => env('REDIS_HOST', '127.0.0.1'),
