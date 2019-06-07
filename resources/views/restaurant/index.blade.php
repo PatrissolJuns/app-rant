@@ -53,14 +53,14 @@
                 $(function(){
                     $('body').on('click', '.pagination a', function(e){
                         e.preventDefault();
-                        alert('dans la pagi');
+                        //alert('dans la pagi');
                         var url = $(this).attr('href');
                         var page = $(this).attr('href').split('page=')[1];
                         var nom = '{{ $dataSearch["nom"] }}';
                         var localite = '{{ $dataSearch["localite"] }}';
                         var cuisine = '{{ $dataSearch["cuisine"] }}';
                         
-                        alert('cuisine datasearch est : '+cuisine);
+                        //alert('cuisine datasearch est : '+cuisine);
                         //getArticle(page);
                         getArticle2(page, nom, localite, cuisine);
                         window.history.pushState("", "", url);
